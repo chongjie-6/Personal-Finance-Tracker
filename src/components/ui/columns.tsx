@@ -2,22 +2,68 @@
 
 import { CsvEntry } from "@/types/csvEntries";
 import { ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown } from "lucide-react";
+import { Button } from "./button";
 
 export const columns: ColumnDef<CsvEntry>[] = [
   {
     accessorKey: "date",
-    header: "Date",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="!p-0"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date
+          <ArrowUpDown className="h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "cost",
-    header: "Cost",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="!p-0"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Cost
+          <ArrowUpDown className="h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="!p-0"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Description
+          <ArrowUpDown className="h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "ongoingTotal",
-    header: "Ongoing Total",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="!p-0"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Total
+          <ArrowUpDown className="h-4 w-4" />
+        </Button>
+      );
+    },
   },
 ];

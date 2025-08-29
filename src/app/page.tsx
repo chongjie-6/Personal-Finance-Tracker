@@ -7,7 +7,7 @@ import { columns } from "@/components/ui/columns";
 
 export default function Home() {
   const [csvData, setCsvData] = useState<CsvEntry[]>([]);
-
+  console.log(csvData);
   return (
     <div className="page">
       {csvData.length ? (

@@ -19,13 +19,21 @@ export default function Upload({
       // Then split the data based on commas
       const splitCommas = filteredEntries.map((data) => data.split(","));
 
+      // We also don't need the last element with how we're filtering
+      splitCommas?.pop();
+
       // Finally we convert each entry into an object
-      const filteredObjects = splitCommas.map((entry) => {
-        const [date, cost, description, ongoingTotal] = entry;
+      const filteredObjects = splitCommas?.map((entry) => {
+        const [date, costNumber, description, ongoingTotalString] = entry;
+
+        // Convert cost and ongoing total into integer
+        const cost = parseFloat(costNumber);
+        const ongoingTotal = parseFloat(ongoingTotalString);
+
         return { date, cost, description, ongoingTotal };
       });
 
-      setCsvData(filteredObjects);
+      setCsvData(filteredObjects || []);
     }
   };
 
